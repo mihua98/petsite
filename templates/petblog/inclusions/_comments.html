@@ -1,0 +1,18 @@
+{% load static %}
+<div id="comment-area" class="blog-comment-wrapper mt-55">
+    <h4 class="blog-dec-title">评论数 : {{ comment_count }}</h4>
+    {% for comment in comment_list %}
+        <div class="single-comment-wrapper mt-35">
+            <div class="blog-comment-img">
+                <img src="{% static 'assets/img/blog/blog-comment1.png' %}" alt="">
+            </div>
+            <div class="blog-comment-content">
+                <h4>{{ comment.user }}</h4>
+                <span>{{ comment.created_time }} </span>
+                <p>{{ comment.text|linebreaks }}</p>
+            </div>
+        </div>
+    {% empty %}
+        暂无评论
+    {% endfor %}
+</div>

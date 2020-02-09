@@ -1,0 +1,18 @@
+{% load static %}
+<div class="shop-widget mt-50">
+    <h4 class="shop-sidebar-title">最新博客</h4>
+    <div class="recent-post-wrapper mt-25">
+        {% for post in recent_post_list %}
+            <div class="single-recent-post mb-20">
+                <div class="recent-post-img">
+                    <a href="{{ post.get_absolute_url }}"><img src="{% static 'assets/img/blog/blog-s1.jpg' %}" alt=""></a>
+                </div>
+                <div class="recent-post-content">
+                    <h4><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                    <span>By:{{ post.author }}</span><br>
+                    <span>{{ post.created_time }}</span>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>

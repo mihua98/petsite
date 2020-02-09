@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="breadcrumb-area pt-95 pb-95 bg-img"
+         style="background-image:url({% static 'assets/img/banner/banner-2.jpg' %});">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2>找回密码</h2>
+                <ul>
+                    <li><a href="{% url 'index' %}">主页</a></li>
+                    <li class="active">找回密码</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="login-register-area pt-95 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                    <div class="login-register-wrapper">
+                        <div class="login-register-tab-list nav">
+                            <a class="active" href="{% url 'users:forget_pwd' %}">
+                                <h4> 找回密码 </h4>
+                            </a>
+                        </div>
+                        <div class="tab-content">
+
+                            <div class="tab-pane active">
+                                <div class="login-form-container">
+                                    <div class="login-register-form">
+                                        <form action="{% url 'users:forget_pwd' %}" method="post">
+                                            {% csrf_token %}
+                                            <input class="text" name="email" type="text" placeholder="请输入您的邮箱">
+                                            <input style="width:60%;float: left;" id="id_captcha_1"
+                                                   class="form-control user_captcha text" placeholder="请输入验证码"
+                                                   autocomplete="off" autocapitalize="off" spellcheck="false"
+                                                   name="captcha_1" type="text">
+                                            <img style="margin-left: 20px;margin-top: 8px;" class="captcha" alt="验证码"
+                                                 src="{{ image_url }}">
+                                            <input id="id_captcha_0" name="captcha_0" value="{{ hashkey }}"
+                                                   type="hidden">
+                                            {{ form.captcha.errors }}
+                                            <div style="color:red">{% for key,error in register_form.errors.items %}
+                                                {{ error }}{% endfor %}{{ msg }}</div>
+                                            <div class="button-box" style="margin-top: 36px;">
+                                                <button class="submit" type="submit"><span>确定</span></button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.captcha').click(function () {
+            $.getJSON("/captcha/refresh/", function (result) {
+                $('.captcha').attr('src', result['image_url']);
+                $('#id_captcha_0').val(result['key'])
+            });
+        });
+    </script>
+{% endblock content %}

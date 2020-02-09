@@ -1,0 +1,443 @@
+<!doctype html>
+<html class="no-js" lang="zh">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Marten - Pet Food eCommerce Bootstrap4 Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+
+    <!-- all css here -->
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/simple-line-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/meanmenu.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">
+    <script src="{% static 'assets/js/vendor/modernizr-2.8.3.min.js' %}"></script>
+    <script src="{% static 'assets/js/vendor/jquery-1.12.0.min.js' %}"></script>
+    <link href="https://cdn.bootcss.com/highlight.js/9.15.8/styles/github.min.css" rel="stylesheet">
+
+    <style>
+        .codehilite {
+            padding: 0;
+        }
+
+        /* for block of numbers */
+        .hljs-ln-numbers {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+            text-align: center;
+            color: #ccc;
+            border-right: 1px solid #CCC;
+            vertical-align: top;
+            padding-right: 5px;
+        }
+
+        .hljs-ln-n {
+            width: 30px;
+        }
+
+        /* for block of code */
+        .hljs-ln .hljs-ln-code {
+            padding-left: 10px;
+            white-space: pre;
+        }
+    </style>
+</head>
+<body>
+<header class="header-area">
+    <div class="header-top theme-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-12">
+                    <div class="welcome-area">
+                        <p>欢迎来到PlusSeven宠物网!
+                            {% if user.is_authenticated %}
+                                <a href="{% url 'users:userinfo' %}" style="color: blanchedalmond;">{{ user }}</a></p>
+                            {% else %}
+                                <a href="{% url 'users:login' %}" style="color: blanchedalmond;">请登录</a>
+                            {% endif %}
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-8 col-12">
+                    <div class="account-curr-lang-wrap f-right">
+                        <ul>
+                            {% if user.is_authenticated %}
+                                <li><a href="{% url 'users:logout' %}">注销</a></li>
+                            {% else %}
+                                <li><a href="{% url 'users:login' %}">登录</a></li>
+                            {% endif %}
+                            <li><a href="{% url 'users:register' %}">注册</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header-bottom transparent-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-5">
+                    <div class="logo pt-39">
+                        <a href="{% url 'index' %}"><img alt="" src="{% static 'assets/img/logo/logo.png' %}"></a>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-7 d-none d-lg-block">
+                    <div class="main-menu text-center">
+                        <nav>
+                            <ul>
+                                <li><a href="{% url 'index' %}">主页</a>
+                                </li>
+                                <li class="mega-menu-position"><a href="{% url 'pet_shop:list' %}">宠物商城</a>
+                                    <ul class="mega-menu">
+                                        <li>
+                                            <ul>
+                                                <li class="mega-menu-title">Dogs Food</li>
+                                                <li><a href="shop-page.html">Eggs</a></li>
+                                                <li><a href="shop-page.html">Carrots</a></li>
+                                                <li><a href="shop-page.html">Salmon fishs</a></li>
+                                                <li><a href="shop-page.html">Peanut Butter</a></li>
+                                                <li><a href="shop-page.html">Grapes & Raisins</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li class="mega-menu-title">Cats Food</li>
+                                                <li><a href="shop-page.html">Meat</a></li>
+                                                <li><a href="shop-page.html">Fish</a></li>
+                                                <li><a href="shop-page.html">Eggs</a></li>
+                                                <li><a href="shop-page.html">Veggies</a></li>
+                                                <li><a href="shop-page.html">Cheese</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li class="mega-menu-title">Fishs Food</li>
+                                                <li><a href="shop-page.html">Rice</a></li>
+                                                <li><a href="shop-page.html">Veggies</a></li>
+                                                <li><a href="shop-page.html">Cheese</a></li>
+                                                <li><a href="shop-page.html">wheat bran</a></li>
+                                                <li><a href="shop-page.html">Cultivation</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <ul>
+                                                <li><a href="shop-page.html"><img alt=""
+                                                                                  src="{% static 'assets/img/banner/menu-img-4.jpg' %}"></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">领养信息</a>
+                                    <ul class="submenu">
+                                        <li>
+                                            <a href="about-us.html">about us</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'petblog:list' %}">我们的故事</a></li>
+                                <li><a href="about-us.html">宠物科普</a></li>
+                                <li><a href="contact.html">宠物找回</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-lg-2 col-md-8 col-sm-8 col-7">
+                    <div class="search-login-cart-wrapper">
+                        {% if user.is_authenticated %}
+                            <div class="header-login same-style">
+                                <a href="{% url 'users:userinfo' %}"><i class="icon-user icons" title="个人中心"></i></a>
+                            </div>
+                            <div class="header-cart same-style">
+                                <button class="icon-cart" title="购物车">
+                                    <i class="icon-handbag"></i>
+                                    <span class="count-style">02</span>
+                                </button>
+                                <div class="shopping-cart-content">
+                                    <ul>
+                                        <li class="single-shopping-cart">
+                                            <div class="shopping-cart-img">
+                                                <a href="#"><img alt=""
+                                                                 src="{% static 'assets/img/cart/cart-1.jpg' %}"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="#">狗粮 </a></h4>
+                                                <h6>数量: 2</h6>
+                                                <span>￥260.00</span>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                <a href="#"><i class="ti-close"></i></a>
+                                            </div>
+                                        </li>
+                                        <li class="single-shopping-cart">
+                                            <div class="shopping-cart-img">
+                                                <a href="#"><img alt=""
+                                                                 src="{% static 'assets/img/cart/cart-2.jpg' %}"></a>
+                                            </div>
+                                            <div class="shopping-cart-title">
+                                                <h4><a href="#">Dog Calcium Food</a></h4>
+                                                <h6>Qty: 02</h6>
+                                                <span>$260.00</span>
+                                            </div>
+                                            <div class="shopping-cart-delete">
+                                                <a href="#"><i class="ti-close"></i></a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div class="shopping-cart-total">
+                                        <h4>运费 : <span>￥20.00</span></h4>
+                                        <h4>总计 : <span class="shop-total">￥260.00</span></h4>
+                                    </div>
+                                    <div class="shopping-cart-btn">
+                                        <a href="cart.html">查看我的购物车</a>
+                                        <a href="checkout.html">去付款</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="mobile-menu-area electro-menu d-md-block col-md-12 col-lg-12 col-12 d-lg-none d-xl-none">
+                    <div class="mobile-menu">
+                        <nav id="mobile-menu-active">
+                            <ul class="menu-overflow">
+                                <li><a href="#">HOME</a>
+                                    <ul>
+                                        <li><a href="index.html">home version 1</a></li>
+                                        <li><a href="index-2.html">home version 2</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">pages</a>
+                                    <ul>
+                                        <li>
+                                            <a href="about-us.html">about us</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-page.html">shop page</a>
+                                        </li>
+                                        <li>
+                                            <a href="shop-list.html">shop list</a>
+                                        </li>
+                                        <li>
+                                            <a href="product-details.html">product details</a>
+                                        </li>
+                                        <li>
+                                            <a href="cart.html">cart page</a>
+                                        </li>
+                                        <li>
+                                            <a href="checkout.html">checkout</a>
+                                        </li>
+                                        <li>
+                                            <a href="wishlist.html">wishlist</a>
+                                        </li>
+                                        <li>
+                                            <a href="contact.html">contact us</a>
+                                        </li>
+                                        <li>
+                                            <a href="my-account.html">my account</a>
+                                        </li>
+                                        <li>
+                                            <a href="login-register.html">login / register</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Food</a>
+                                    <ul>
+                                        <li><a href="#">Dogs Food</a>
+                                            <ul>
+                                                <li><a href="shop-page.html">Grapes and Raisins</a></li>
+                                                <li><a href="shop-page.html">Carrots</a></li>
+                                                <li><a href="shop-page.html">Peanut Butter</a></li>
+                                                <li><a href="shop-page.html">Salmon fishs</a></li>
+                                                <li><a href="shop-page.html">Eggs</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Cats Food</a>
+                                            <ul>
+                                                <li><a href="shop-page.html">Meat</a></li>
+                                                <li><a href="shop-page.html">Fish</a></li>
+                                                <li><a href="shop-page.html">Eggs</a></li>
+                                                <li><a href="shop-page.html">Veggies</a></li>
+                                                <li><a href="shop-page.html">Cheese</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#">Fishs Food</a>
+                                            <ul>
+                                                <li><a href="shop-page.html">Rice</a></li>
+                                                <li><a href="shop-page.html">Veggies</a></li>
+                                                <li><a href="shop-page.html">Cheese</a></li>
+                                                <li><a href="shop-page.html">wheat bran</a></li>
+                                                <li><a href="shop-page.html">Cultivation</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">blog</a>
+                                    <ul>
+                                        <li>
+                                            <a href="blog.html">blog page</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-leftsidebar.html">blog left sidebar</a>
+                                        </li>
+                                        <li>
+                                            <a href="blog-details.html">blog details</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li><a href="contact.html"> Contact us </a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                    aria-hidden="true">&times;</span></button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
+{% block content %}{% endblock %}
+
+<footer class="footer-area">
+    <div class="footer-top pt-80 pb-50 gray-bg-2">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-widget mb-30">
+                        <div class="footer-info-wrapper">
+                            <div class="footer-logo">
+                                <a href="#">
+                                    <img src="{% static 'assets/img/logo/logo-2.png' %}" alt="">
+                                </a>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, co adipisi elit, sed eiusmod tempor incididunt ut labore et
+                                dolore</p>
+                            <div class="social-icon">
+                                <ul>
+                                    <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                                    <li><a href="#"><i class="icon-social-instagram"></i></a></li>
+                                    <li><a href="#"><i class="icon-social-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="icon-social-skype"></i></a></li>
+                                    <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
+                    <div class="footer-widget mb-30 pl-50">
+                        <h4 class="footer-title">USEFUL LINKS</h4>
+                        <div class="footer-content">
+                            <ul>
+                                <li><a href="#">Help & Contact Us</a></li>
+                                <li><a href="#">Returns & Refunds</a></li>
+                                <li><a href="#">Online Stores</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-2 col-md-6 col-sm-6">
+                    <div class="footer-widget mb-30 pl-70">
+                        <h4 class="footer-title">HELP</h4>
+                        <div class="footer-content">
+                            <ul>
+                                <li><a href="#">Faq's </a></li>
+                                <li><a href="#">Pricing Plans</a></li>
+                                <li><a href="#">Order Traking</a></li>
+                                <li><a href="#">Returns </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6">
+                    <div class="footer-widget">
+                        <div class="newsletter-wrapper">
+                            <p>Subscribe to our newsletter and get 10% off your first purchase..</p>
+                            <div class="newsletter-style">
+                                <div id="mc_embed_signup" class="subscribe-form">
+                                    <form action="#" method="post" id="mc-embedded-subscribe-form"
+                                          name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                        <div id="mc_embed_signup_scroll" class="mc-form">
+                                            <input type="email" value="" name="EMAIL" class="email"
+                                                   placeholder="Your mail address" required>
+                                            <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                            <div class="mc-news" aria-hidden="true"><input type="text"
+                                                                                           name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef"
+                                                                                           tabindex="-1" value=""></div>
+                                            <div class="clear"><input type="submit" value="SEND" name="subscribe"
+                                                                      id="mc-embedded-subscribe" class="button"></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-img">
+                            <a href="{% url 'index' %}">
+                                <img src="{% static 'assets/img/icon-img/payment.png' %}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom gray-bg-3 pt-17 pb-15">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="copyright text-center">
+                        <p>Copyright (c) <a href="http://www.sucai8.cn/">Marten</a> All Right Reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+<!-- all js here -->
+
+<script src="{% static 'assets/js/popper.js' %}"></script>
+<script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'assets/js/waypoints.min.js' %}"></script>
+<script src="{% static 'assets/js/elevetezoom.js' %}"></script>
+<script src="{% static 'assets/js/ajax-mail.js' %}"></script>
+<script src="{% static 'assets/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'assets/js/plugins.js' %}"></script>
+<script src="{% static 'assets/js/main.js' %}"></script>
+
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlightjs-line-numbers.js/2.7.0/highlightjs-line-numbers.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+    hljs.initLineNumbersOnLoad();
+</script>
+
+</body>
+</html>

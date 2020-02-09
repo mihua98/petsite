@@ -1,0 +1,475 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="breadcrumb-area pt-95 pb-95 bg-img"
+         style="background-image:url({% static 'assets/img/banner/banner-2.jpg' %});">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2>商品详情</h2>
+                <ul>
+                    <li><a href="{% url 'index' %}">首页</a></li>
+                    <li class="active">商品详情</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="shop-area pt-95 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <div class="product-details-img">
+                        <img id="zoompro" src="{% static 'assets/img/product-details/l1.jpg' %}"
+                             data-zoom-image="{% static 'assets/img/product-details/bl1.jpg' %}" alt="zoom"/>
+                        <div id="gallery" class="mt-12 product-dec-slider owl-carousel">
+                            <a data-image="{% static 'assets/img/product-details/l1.jpg' %}"
+                               data-zoom-image="{% static 'assets/img/product-details/bl1.jpg' %}">
+                                <img src="{% static 'assets/img/product-details/s1.jpg' %}" alt="">
+                            </a>
+                            <a data-image="{% static 'assets/img/product-details/l2.jpg' %}"
+                               data-zoom-image="{% static 'assets/img/product-details/bl2.jpg' %}">
+                                <img src="{% static 'assets/img/product-details/s2.jpg' %}" alt="">
+                            </a>
+                            <a data-image="{% static 'assets/img/product-details/l3.jpg' %}"
+                               data-zoom-image="{% static 'assets/img/product-details/bl3.jpg' %}">
+                                <img src="{% static 'assets/img/product-details/s3.jpg' %}" alt="">
+                            </a>
+                            <a data-image="{% static 'assets/img/product-details/l4.jpg' %}"
+                               data-zoom-image="{% static 'assets/img/product-details/bl4.jpg' %}">
+                                <img src="{% static 'assets/img/product-details/s4.jpg' %}" alt="">
+                            </a>
+                            <a data-image="{% static 'assets/img/product-details/l3.jpg' %}"
+                               data-zoom-image="{% static 'assets/img/product-details/bl3.jpg' %}">
+                                <img src="{% static 'assets/img/product-details/s3.jpg' %}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="product-details-content">
+                        <h2>{{ product.name }}</h2>
+                        <div class="product-rating">
+                            <i class="ti-star theme-color"></i>
+                            <i class="ti-star theme-color"></i>
+                            <i class="ti-star theme-color"></i>
+                            <i class="ti-star"></i>
+                            <i class="ti-star"></i>
+                            <span>来自5个用户的打分</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="new">￥{{ product.price }} </span>
+                            {% if product.old_price %}
+                                <span class="old">￥{{ product.old_price }}</span>
+                            {% endif %}
+                        </div>
+                        <div class="in-stock">
+                            <span><i class="ion-android-checkbox-outline"></i> 库存数:{{ product.num }}</span>
+                        </div>
+                        <p>{{ product.intro }}</p>
+                        <div class="product-details-style shorting-style mt-30">
+                            <label>color:</label>
+                            <select>
+                                <option value=""> 请选择</option>
+                                <option value=""> orange</option>
+                                <option value=""> pink</option>
+                                <option value=""> yellow</option>
+                            </select>
+                        </div>
+                        <div class="quality-wrapper mt-30 product-quantity">
+                            <label>数量:</label>
+                            <div class="cart-plus-minus">
+                                <input class="cart-plus-minus-box" type="text" name="qtybutton" value="2">
+                            </div>
+                        </div>
+                        <div class="product-list-action">
+                            <div class="product-list-action-left">
+                                <a class="addtocart-btn" href="#" title="添加到购物车">
+                                    <i class="ion-bag"></i>
+                                    添加到购物车
+                                </a>
+                            </div>
+                            <div class="product-list-action-right">
+                                <a href="#" title="收藏">
+                                    <i class="ti-heart"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="social-icon mt-30">
+                            <ul>
+                                <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                                <li><a href="#"><i class="icon-social-instagram"></i></a></li>
+                                <li><a href="#"><i class="icon-social-linkedin"></i></a></li>
+                                <li><a href="#"><i class="icon-social-skype"></i></a></li>
+                                <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="description-review-area pb-100">
+        <div class="container">
+            <div class="description-review-wrapper gray-bg pt-40">
+                <div class="description-review-topbar nav text-center">
+                    <a class="active" data-toggle="tab" href="#des-details1">商品描述</a>
+                    <a data-toggle="tab" href="#des-details2">更多信息</a>
+                    <a data-toggle="tab" href="#des-details3">评价(2)</a>
+                </div>
+                <div class="tab-content description-review-bottom">
+
+                    <div id="des-details1" class="tab-pane active">
+                        <div class="product-description-wrapper">
+                            <p>{{ product.details }}</p>
+                        </div>
+                    </div>
+
+                    <div id="des-details2" class="tab-pane">
+                        <div class="product-anotherinfo-wrapper">
+                            <ul>
+                                <li><span>name:</span> Scanpan Classic Covered</li>
+                                <li><span>color:</span> orange , pink , yellow</li>
+                                <li><span>size:</span> xl, l , m , sl</li>
+                                <li><span>length:</span> 102cm, 110cm , 115cm</li>
+                                <li><span>Brand:</span> Nike, Religion, Diesel, Monki</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div id="des-details3" class="tab-pane">
+                        <div class="rattings-wrapper">
+
+                            <div class="sin-rattings">
+                                <div class="star-author-all">
+                                    <div class="product-rating f-left">
+                                        <i class="ti-star theme-color"></i>
+                                        <i class="ti-star theme-color"></i>
+                                        <i class="ti-star theme-color"></i>
+                                        <i class="ti-star theme-color"></i>
+                                        <i class="ti-star theme-color"></i>
+                                        <span>(5)</span>
+                                    </div>
+                                    <div class="ratting-author f-right">
+                                        <h3>YuJiaqi</h3>
+                                        <span>12:24</span>
+                                        <span>2020.1.1</span>
+                                    </div>
+                                </div>
+                                <p>这就是全世界最好的狗粮.</p>
+                            </div>
+
+                            <div class="sin-rattings">
+                                <div class="star-author-all">
+                                    <div class="product-rating f-left">
+                                        <i class="ti-star theme-color"></i>
+                                        <i class="ti-star theme-color"></i>
+                                        <i class="ti-star theme-color"></i>
+                                        <i class="ti-star theme-color"></i>
+                                        <i class="ti-star"></i>
+                                        <span>(4)</span>
+                                    </div>
+                                    <div class="ratting-author f-right">
+                                        <h3>farhana shuvo</h3>
+                                        <span>12:24</span>
+                                        <span>9 March 2018</span>
+                                    </div>
+                                </div>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore magna aliqua. Utenim ad minim veniam, quis nost rud
+                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Lorem ipsum
+                                    dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
+                                    labore et dolore magna aliqua. Utenim ad minim veniam, quis nost.</p>
+                            </div>
+                        </div>
+
+                        <div class="ratting-form-wrapper">
+                            <h3>留下你的评价 :</h3>
+                            <div class="ratting-form">
+                                <form action="#">
+                                    <div class="star-box">
+                                        <h2>打分:</h2>
+                                        <div class="product-rating">
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star theme-color"></i>
+                                            <i class="ti-star"></i>
+                                            <i class="ti-star"></i>
+                                            <span>(3)</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="rating-form-style form-submit">
+                                                <textarea name="message" placeholder="评价"></textarea>
+                                                <input type="submit" value="提交">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="related-product-area pt-95 pb-80 gray-bg">
+        <div class="container">
+            <div class="section-title text-center mb-55">
+                <h4>Most Populer</h4>
+                <h2>Related Products</h2>
+            </div>
+            <div class="related-product-active owl-carousel">
+                <div class="product-wrapper">
+                    <div class="product-img">
+                        <a href="product-details.html">
+                            <img src="{% static 'assets/img/product/product-4.jpg' %}" alt="">
+                        </a>
+                        <div class="product-action">
+                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                <i class="ti-plus"></i>
+                            </a>
+                            <a title="Add To Cart" href="#">
+                                <i class="ti-shopping-cart"></i>
+                            </a>
+                        </div>
+                        <div class="product-action-wishlist">
+                            <a title="Wishlist" href="#">
+                                <i class="ti-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h4><a href="product-details.html">Dog Calcium Food</a></h4>
+                        <div class="product-price">
+                            <span class="new">$20.00 </span>
+                            <span class="old">$50.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-img">
+                        <a href="product-details.html">
+                            <img src="{% static 'assets/img/product/product-5.jpg' %}" alt="">
+                        </a>
+                        <div class="product-action">
+                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                <i class="ti-plus"></i>
+                            </a>
+                            <a title="Add To Cart" href="#">
+                                <i class="ti-shopping-cart"></i>
+                            </a>
+                        </div>
+                        <div class="product-action-wishlist">
+                            <a title="Wishlist" href="#">
+                                <i class="ti-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h4><a href="product-details.html">Cat Buffalo Food</a></h4>
+                        <div class="product-price">
+                            <span class="new">$22.00 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-img">
+                        <a href="product-details.html">
+                            <img src="{% static 'assets/img/product/product-6.jpg' %}" alt="">
+                        </a>
+                        <div class="product-action">
+                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                <i class="ti-plus"></i>
+                            </a>
+                            <a title="Add To Cart" href="#">
+                                <i class="ti-shopping-cart"></i>
+                            </a>
+                        </div>
+                        <div class="product-action-wishlist">
+                            <a title="Wishlist" href="#">
+                                <i class="ti-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h4><a href="product-details.html">Legacy Dog Food</a></h4>
+                        <div class="product-price">
+                            <span class="new">$50.00 </span>
+                            <span class="old">$70.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-img">
+                        <a href="product-details.html">
+                            <img src="{% static 'assets/img/product/product-7.jpg' %}" alt="">
+                        </a>
+                        <div class="product-action">
+                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                <i class="ti-plus"></i>
+                            </a>
+                            <a title="Add To Cart" href="#">
+                                <i class="ti-shopping-cart"></i>
+                            </a>
+                        </div>
+                        <div class="product-action-wishlist">
+                            <a title="Wishlist" href="#">
+                                <i class="ti-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h4><a href="product-details.html">Chicken Dry Cat Food</a></h4>
+                        <div class="product-price">
+                            <span class="new">$60.00 </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-img">
+                        <a href="product-details.html">
+                            <img src="{% static 'assets/img/product/product-8.jpg' %}" alt="">
+                        </a>
+                        <div class="product-action">
+                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                <i class="ti-plus"></i>
+                            </a>
+                            <a title="Add To Cart" href="#">
+                                <i class="ti-shopping-cart"></i>
+                            </a>
+                        </div>
+                        <div class="product-action-wishlist">
+                            <a title="Wishlist" href="#">
+                                <i class="ti-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h4><a href="product-details.html">Stomach Dog Food</a></h4>
+                        <div class="product-price">
+                            <span class="new">$70.00 </span>
+                            <span class="old">$90.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-wrapper">
+                    <div class="product-img">
+                        <a href="product-details.html">
+                            <img src="{% static 'assets/img/product/product-9.jpg' %}" alt="">
+                        </a>
+                        <div class="product-action">
+                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                <i class="ti-plus"></i>
+                            </a>
+                            <a title="Add To Cart" href="#">
+                                <i class="ti-shopping-cart"></i>
+                            </a>
+                        </div>
+                        <div class="product-action-wishlist">
+                            <a title="Wishlist" href="#">
+                                <i class="ti-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="product-content">
+                        <h4><a href="product-details.html">Nourish Puppy Food</a></h4>
+                        <div class="product-price">
+                            <span class="new">$80.00 </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="ti-close" aria-hidden="true"></span>
+        </button>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="qwick-view-left">
+                        <div class="quick-view-learg-img">
+                            <div class="quick-view-tab-content tab-content">
+                                <div class="tab-pane active show fade" id="modal1" role="tabpanel">
+                                    <img src="{% static 'assets/img/quick-view/l1.jpg' %}" alt="">
+                                </div>
+                                <div class="tab-pane fade" id="modal2" role="tabpanel">
+                                    <img src="{% static 'assets/img/quick-view/l2.jpg' %}" alt="">
+                                </div>
+                                <div class="tab-pane fade" id="modal3" role="tabpanel">
+                                    <img src="{% static 'assets/img/quick-view/l3.jpg' %}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="quick-view-list nav" role="tablist">
+                            <a class="active" href="#modal1" data-toggle="tab" role="tab">
+                                <img src="{% static 'assets/img/quick-view/s1.jpg' %}" alt="">
+                            </a>
+                            <a href="#modal2" data-toggle="tab" role="tab">
+                                <img src="{% static 'assets/img/quick-view/s2.jpg' %}" alt="">
+                            </a>
+                            <a href="#modal3" data-toggle="tab" role="tab">
+                                <img src="{% static 'assets/img/quick-view/s3.jpg' %}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="qwick-view-right">
+                        <div class="qwick-view-content">
+                            <h3>Dog Calcium Food</h3>
+                            <div class="product-price">
+                                <span>$19.00 </span>
+                            </div>
+                            <div class="product-rating">
+                                <i class="ion-star theme-color"></i>
+                                <i class="ion-star theme-color"></i>
+                                <i class="ion-star theme-color"></i>
+                                <i class="ion-star theme-color"></i>
+                                <i class="ion-star theme-color"></i>
+                            </div>
+                            <p>Lorem ipsum dolor sit amet, consectetur adip elit, sed do amt tempor incididun ut labore
+                                et dolore magna aliqua. Ut enim ad mi , quis nostrud veniam exercitation .</p>
+                            <div class="quick-view-select">
+                                <div class="select-option-part">
+                                    <label>Size*</label>
+                                    <select class="select">
+                                        <option value="">- Please Select -</option>
+                                        <option value="">XS</option>
+                                        <option value="">S</option>
+                                        <option value="">M</option>
+                                        <option value=""> L</option>
+                                        <option value="">XL</option>
+                                        <option value="">XXL</option>
+                                    </select>
+                                </div>
+                                <div class="select-option-part">
+                                    <label>Color*</label>
+                                    <select class="select">
+                                        <option value="">- Please Select -</option>
+                                        <option value="">orange</option>
+                                        <option value="">pink</option>
+                                        <option value="">yellow</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="quickview-plus-minus">
+                                <div class="cart-plus-minus">
+                                    <input type="text" value="2" name="qtybutton" class="cart-plus-minus-box">
+                                </div>
+                                <div class="quickview-btn-cart">
+                                    <a class="btn-style" href="#">add to cart</a>
+                                </div>
+                                <div class="quickview-btn-wishlist">
+                                    <a class="btn-hover" href="#"><i class="ti-heart"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="breadcrumb-area pt-95 pb-95 bg-img"
+         style="background-image:url({% static 'assets/img/banner/banner-2.jpg' %});">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2>注册</h2>
+                <ul>
+                    <li><a href="{% url 'index' %}">主页</a></li>
+                    <li class="active">注册</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="login-register-area pt-95 pb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 col-md-12 ml-auto mr-auto">
+                    <div class="login-register-wrapper">
+                        <div class="login-register-tab-list nav">
+                            <a href="{% url 'users:login' %}">
+                                <h4> 登录 </h4>
+                            </a>
+                            <a class="active" href="{% url 'users:register' %}">
+                                <h4> 注册 </h4>
+                            </a>
+                        </div>
+                        <div class="tab-content">
+
+                            <div class="tab-pane active">
+                                <div class="login-form-container">
+                                    <div class="login-register-form">
+                                        <form action="{% url 'users:register' %}" method="post">
+                                            {% csrf_token %}
+                                            <input class="text" name="email" type="text" placeholder="邮箱">
+                                            <input class="text" name="password" type="password"
+                                                   placeholder="6-20位非中文字符密码">
+                                            <input style="width:60%;float: left;" id="id_captcha_1"
+                                                   class="form-control user_captcha text" placeholder="请输入验证码"
+                                                   autocomplete="off" autocapitalize="off" spellcheck="false"
+                                                   name="captcha_1" type="text">
+                                            <img style="margin-left: 20px;margin-top: 8px;" class="captcha" alt="验证码"
+                                                 src="{{ image_url }}">
+                                            <input id="id_captcha_0" name="captcha_0" value="{{ hashkey }}"
+                                                   type="hidden">
+                                            {{ form.captcha.errors }}
+                                            <div style="color:red">{% for key,error in register_form.errors.items %}
+                                                {{ error }}{% endfor %}{{ msg }}</div>
+                                            <div class="button-box" style="margin-top: 36px;">
+                                                <button class="submit" type="submit"><span>注册</span></button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $('.captcha').click(function () {
+            $.getJSON("/captcha/refresh/", function (result) {
+                $('.captcha').attr('src', result['image_url']);
+                $('#id_captcha_0').val(result['key'])
+            });
+        });
+    </script>
+{% endblock content %}

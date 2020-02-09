@@ -1,0 +1,15 @@
+<form action="{% url 'petblog:comment' post.pk %}" method="post">
+    {% csrf_token %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="leave-form">
+                <label for="{{ form.text.id_for_label }}">{{ form.text.label }}:</label>
+                {{ form.text }}
+                {{ form.text.errors }}
+                <div class="text-leave">
+                    <input type="submit" value="发送评论">
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

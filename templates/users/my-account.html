@@ -1,0 +1,184 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="breadcrumb-area pt-95 pb-95 bg-img"
+         style="background-image:url({% static 'assets/img/banner/banner-2.jpg' %});">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2>个人中心</h2>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li class="active">个人中心</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- my account start -->
+    <div class="my-account-area pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="checkout-wrapper">
+                        <div id="faq" class="panel-group">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title"><span>1</span> <a data-toggle="collapse" data-parent="#faq"
+                                                                              href="#my-account-1">编辑我的账号信息 </a></h5>
+                                </div>
+                                <div id="my-account-1" class="panel-collapse collapse show">
+                                    <div class="panel-body">
+                                        <div class="billing-information-wrapper">
+                                            <form action="{% url 'users:update_userinfo' %}" method="post">
+                                                {% csrf_token %}
+                                                <div class="account-info-wrapper">
+                                                    <h4>我的账户信息</h4>
+                                                    <h5>我的个人资料</h5>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="billing-info">
+                                                            <label for="username">用户名</label>
+                                                            <input id="username" name="username" type="text"
+                                                                   disabled="disabled" value="{{ user.username }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="billing-info">
+                                                            <label for="nickname">昵称</label>
+                                                            <input id="nickname" name="nickname" type="text"
+                                                                   value="{{ user.nickname }}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="billing-info">
+                                                            <label>性别 </label>
+                                                            男:<input id="male"
+                                                                     {% ifequal user.gender 'male' %}checked="checked"{% endifequal %}
+                                                                     name="gender" type="radio" value="male"
+                                                                     style="width: 80px">
+                                                            女:<input id="female"
+                                                                     {% ifequal user.gender 'female' %}checked="checked"{% endifequal %}
+                                                                     name="gender" type="radio" value="female"
+                                                                     style="width: 80px">
+                                                            保密:<input id="secret"
+                                                                      {% ifequal user.gender 'secret' %}checked="checked"{% endifequal %}
+                                                                      name="gender" type="radio" value="secret"
+                                                                      style="width: 80px">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6">
+                                                        <div class="billing-info">
+                                                            <label for="email">邮箱</label>
+                                                            <input id="email" name="email" type="email"
+                                                                   disabled="disabled" value="{{ user.email }}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="billing-back-btn">
+                                                    <div class="billing-back">
+                                                        <a href="#"><i class="ti-arrow-up"></i> 返回</a>
+                                                    </div>
+                                                    <div class="billing-btn">
+                                                        <button type="submit">确认</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title"><span>2</span> <a data-toggle="collapse" data-parent="#faq"
+                                                                              href="#my-account-2">修改我的密码 </a></h5>
+                                </div>
+                                <div id="my-account-2" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="billing-information-wrapper">
+                                            <form action="{% url 'users:update_user_pwd' %}" method="post">
+                                                {% csrf_token %}
+                                                <div class="account-info-wrapper">
+                                                    <h4>修改密码</h4>
+                                                    <h5>我的密码</h5>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="billing-info">
+                                                            <label for="pwd1">输入新密码</label>
+                                                            <input id="pwd1" name="pwd1" type="password">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12">
+                                                        <div class="billing-info">
+                                                            <label for="pwd2">确认新密码</label>
+                                                            <input id="pwd2" name="pwd2" type="password">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12 col-md-12" style="color: red">
+                                                        {{ msg }}
+                                                    </div>
+                                                </div>
+                                                <div class="billing-back-btn">
+                                                    <div class="billing-back">
+                                                        <a href="#"><i class=" ti-arrow-up"></i> 返回</a>
+                                                    </div>
+                                                    <div class="billing-btn">
+                                                        <button type="submit">确认</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title"><span>3</span> <a data-toggle="collapse" data-parent="#faq"
+                                                                              href="#my-account-3">收货地址 </a></h5>
+                                </div>
+                                <div id="my-account-3" class="panel-collapse collapse">
+                                    <div class="panel-body">
+                                        <div class="billing-information-wrapper">
+                                            <div class="account-info-wrapper">
+                                                <h4>我的收货地址</h4>
+                                            </div>
+                                            <div class="entries-wrapper">
+                                                <div class="row">
+                                                    <div class="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
+                                                        <div class="entries-info text-center">
+                                                            <p>湖南农业大学 </p>
+                                                            <p>寄到这个地址 </p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6 col-md-6 d-flex align-items-center justify-content-center">
+                                                        <div class="entries-edit-delete text-center">
+                                                            <a class="edit" href="#">编辑</a>
+                                                            <a href="#">删除</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="billing-back-btn">
+                                                <div class="billing-back">
+                                                    <a href="#"><i class="ti-arrow-up"></i> 返回</a>
+                                                </div>
+                                                <div class="billing-btn">
+                                                    <button type="submit">确认</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h5 class="panel-title"><span>4</span> <a href="wishlist.html">我的收藏 </a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

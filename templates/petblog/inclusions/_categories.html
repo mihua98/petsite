@@ -1,0 +1,13 @@
+<div class="shop-widget mt-50">
+    <h4 class="shop-sidebar-title">分类</h4>
+    <div class="shop-list-style mt-20">
+        <ul>
+            {% for category in category_list %}
+                <li><a href="{% url 'petblog:category' category.pk %}">{{ category.name }}
+                    <span>{{ category.num_posts }}</span></a></li>
+            {% empty %}
+                暂无分类!
+            {% endfor %}
+        </ul>
+    </div>
+</div>
