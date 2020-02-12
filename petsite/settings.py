@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'captcha',
+    'petback.apps.PetbackConfig',
     'petblog.apps.PetblogConfig',
     'users.apps.UsersConfig',
     'pet_shop.apps.PetShopConfig',
