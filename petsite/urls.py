@@ -24,8 +24,8 @@ urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', IndexView.as_view(), name='index'),  # 首页
                   path('posts/', include('petblog.urls')),  # 宠物博客
-                  path('products/', include('pet_shop.urls')),  # 宠物博客
+                  path('products/', include('pet_shop.urls')),  # 宠物商城
                   path('user/', include('users.urls')),  # 用户管理
                   path('captcha', include('captcha.urls')),  # 验证码
-                  # path('pet_back/', include('pet_back.urls')),  # 宠物找回
+                  path('petback/', include('petback.urls')),  # 宠物找回
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
