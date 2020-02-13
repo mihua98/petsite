@@ -1,6 +1,6 @@
 ﻿{% extends 'base.html' %}
 {% load static %}
-{% load petblog_extras %}
+{% load petback_extras %}
 {% block content %}
     <div class="breadcrumb-area pt-95 pb-95 bg-img"
          style="background-image:url({% static 'assets/img/banner/banner-2.jpg' %});">
@@ -57,7 +57,7 @@
                             <h4 class="shop-sidebar-title">搜索宠物</h4>
                             <div class="shop-search mt-25 mb-50">
                                 <form role="search" class="shop-search-form" method="get"
-                                      action="{% url 'petblog:search' %}">
+                                      action="{% url 'petback:search' %}">
                                     <input type="search" name="q" placeholder="搜索" required>
                                     <button type="submit">
                                         <i class="icon-magnifier"></i>
