@@ -28,6 +28,7 @@ class LostPet(models.Model):
     class Meta:
         verbose_name = '遗失宠物'
         verbose_name_plural = verbose_name
+        ordering = ['-created_time']
 
     def get_absolute_url(self):  # 获得详情页的url
         return reverse('petback:detail', kwargs={'pk': self.pk})
