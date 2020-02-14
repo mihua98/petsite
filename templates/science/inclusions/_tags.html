@@ -3,7 +3,7 @@
     <div class="shop-list-style mt-20">
         <ul>
             {% for tag in tag_list %}
-                <li><a href="{% url 'petblog:tag' tag.pk %}">{{ tag.name }}<span>{{ tag.num_posts }}</span></a></li>
+                <li><a href="{% url 'science:tag' tag.pk %}">{{ tag.name }}<span>{{ tag.num_posts }}</span></a></li>
             {% empty %}
                 暂无标签!
             {% endfor %}

@@ -6,7 +6,6 @@ from ..models import Science, Category, Tag
 register = template.Library()
 
 
-
 @register.inclusion_tag('science/inclusions/_categories.html', takes_context=True)
 def show_categories(context):
     category_list = Category.objects.annotate(num_sciences=Count('science')).filter(num_sciences__gt=0)
@@ -28,4 +27,3 @@ def show_archives(context):
     return {
         'date_list': Science.objects.dates('created_time', 'month', order='DESC'),
     }
-

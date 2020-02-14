@@ -19,17 +19,16 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6">
                     <div class="petback-details-wrapper fadeInLeft">
-                        <span class="views-count"><a href="#">阅读：{{ lost_pet.views }} </a></span>
                         <img alt="" src="/media/{{ lost_pet.pet_img }}">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 d-flex align-items-center">
                     <div class="about-us-content">
                         <h2>{{ lost_pet.name }}</h2>
-                        <p>{{ lost_pet.intro }}</p>
+                        <p>简介: {{ lost_pet.intro }}</p>
                         <div class="about-us-list">
                             <ul>
-                                <li>{{ lost_pet.contact_way }}</li>
+                                <li>联系方式: {{ lost_pet.contact_way }}</li>
                             </ul>
                         </div>
                         <div class="about-us-btn">
@@ -233,7 +232,6 @@
                             <span>Manager </span>
                         </div>
                     </div>
-                    {% show_categories %}
                 </div>
             </div>
         </div>

@@ -10,12 +10,14 @@ import markdown
 from pure_pagination.mixins import PaginationMixin
 import re
 
+
 class ScienceListView(PaginationMixin, ListView):
     """ 博客列表页 """
     model = Science
     template_name = 'science/sciencelist.html'
     context_object_name = 'science_list'
     paginate_by = 5  # 分页
+
 
 class ScienceDetailView(DetailView):
     """ 博客详情页 """

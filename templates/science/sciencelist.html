@@ -2,6 +2,7 @@
 {% load static %}
 {% load science_extras %}
 {% block content %}
+
     <div class="breadcrumb-area pt-95 pb-95 bg-img"
          style="background-image:url({% static 'assets/img/banner/banner-2.jpg' %});">
         <div class="container">
@@ -19,100 +20,70 @@
         <div class="container">
             <div class="row flex-row-reverse">
                 <div class="col-lg-9 col-md-8">
-                    <div class="row">
-
-                        {% for science in science_list %}
-                            <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
-                                <div class="product-wrapper mb-10">
-                                    <div class="product-img" col-lg-6>
-                                        <a href="{{ science.get_absolute_url }}">
-                                            <img src="/media/{{ science.science_img }}" alt="">
-                                        </a>
-                                    </div>
-                                        <div class="product-action" col-lg-6>
-                                            <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                               href="#">
-                                                <i class="ti-plus"></i>
-                                            </a>
-                                            <a title="查看详情" href="{{ science.get_absolute_url }}">
-                                                <i class="ti-shopping-cart"></i>
-                                            </a>
-
-                                        <div class="product-action-wishlist">
-                                            <a title="Wishlist" href="#">
-                                                <i class="ti-heart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="product-list-content">
-                                        <h4><a href="{{ science.get_absolute_url }}">{{ science.title }}</a></h4>
-                                        <div class="product-price">
-                                            {#                                                    <span class="new">$30.00 </span>#}
-                                        </div>
-                                        <p>{{ science.excerpt }}</p>
-                                        <div class="product-list-action">
-                                            <div class="product-list-action-left">
-                                                <a class="addtocart-btn" title="Add to cart"
-                                                   href="{{ science.get_absolute_url }}"><i class="ion-bag"></i>
-                                                    查看详情</a>
+                    <div class="grid-list-product-wrapper">
+                        <div class="product-view product-list">
+                            <div class="row">
+                                {% for science in science_list %}
+                                    <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
+                                        <div class="product-wrapper mb-10">
+                                            <div class="product-img">
+                                                <a href="{{ science.get_absolute_url }}">
+                                                    <img src="/media/{{ science.science_img }}" alt="">
+                                                </a>
+                                                <div class="product-action-wishlist">
+                                                    <a title="收藏" href="#">
+                                                        <i class="ti-heart"></i>
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="product-list-action-right">
-                                                <a title="Wishlist" href="#"><i class="ti-heart"></i></a>
-                                                <a title="Quick View" data-toggle="modal" data-target="#exampleModal"
-                                                   href="#"><i class="ti-plus"></i></a>
+                                            <div class="product-list-content">
+                                                <h4><a href="{{ science.get_absolute_url }}">{{ science.title }}</a>
+                                                </h4>
+                                                <p>{{ science.excerpt }}</p>
+                                                <div class="product-list-action">
+                                                    <div class="product-list-action-left">
+                                                        <a class="addtocart-btn" title="查看详情"
+                                                           href="{{ science.get_absolute_url }}"><i class="ion-bag"></i>
+                                                            查看详情</a>
+                                                    </div>
+                                                    <div class="product-list-action-right">
+                                                        <a title="收藏" href="#"><i class="ti-heart"></i></a>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                {% endfor %}
                             </div>
-                        {% endfor %}
-
-                        {% if is_paginated %}
-                            {{ page_obj.render }}
-                        {% endif %}
-
+                            {% if is_paginated %}
+                                {{ page_obj.render }}
+                            {% endif %}
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-lg-3">
-                <div class="shop-sidebar">
-                    <div class="shop-widget">
-                        <h4 class="shop-sidebar-title">搜索宠物</h4>
-                        <div class="shop-search mt-25 mb-50">
-                            <form role="search" class="shop-search-form" method="get"
-                                  action="{% url 'science:search' %}">
-                                <input type="search" name="q" placeholder="搜索" required>
-                                <button type="submit">
-                                    <i class="icon-magnifier"></i>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-
-
-                    {% show_archives %}
-                    {% show_categories %}
-                    {% show_tags %}
-
-                    {% if post.toc %}
-                        <div class="shop-widget mt-50">
-                            <h4 class="shop-sidebar-title">文章目录</h4>
-                            <div class="mt-20">
-                                <div class="toc">
-                                    <ul>
-                                        {{ post.toc|safe }}
-                                    </ul>
-                                </div>
+                <div class="col-lg-3">
+                    <div class="shop-sidebar">
+                        <div class="shop-widget">
+                            <h4 class="shop-sidebar-title">搜索宠物</h4>
+                            <div class="shop-search mt-25 mb-50">
+                                <form role="search" class="shop-search-form" method="get"
+                                      action="{% url 'science:search' %}">
+                                    <input type="search" name="q" placeholder="搜索" required>
+                                    <button type="submit">
+                                        <i class="icon-magnifier"></i>
+                                    </button>
+                                </form>
                             </div>
                         </div>
-                    {% endif %}
 
+                        {% show_archives %}
+                        {% show_categories %}
+                        {% show_tags %}
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
 {% endblock content %}

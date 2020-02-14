@@ -35,13 +35,13 @@ class Science(models.Model):
     body = models.TextField('正文')
     created_time = models.DateTimeField('创建时间', default=timezone.now)
     modified_time = models.DateTimeField('修改时间')
-    excerpt = models.CharField('摘要',max_length=200, blank=True)
+    excerpt = models.CharField('摘要', max_length=200, blank=True)
     category = models.ForeignKey(Category, verbose_name='分类', on_delete=models.CASCADE)
     tags = models.ManyToManyField(Tag, verbose_name='标签', blank=True)
     author = models.ForeignKey(MyUser, verbose_name='作者', on_delete=models.CASCADE)
     views = models.PositiveIntegerField('阅读量', default=0, editable=False)  # 正整数
     science_img = models.ImageField('科普图片', upload_to='science/science_img/%Y/%m',
-                                default='science/product-9.jpg')
+                                    default='science/product-9.jpg')
 
     class Meta:
         verbose_name = '科普'  # 指定对应的 model 在 admin 后台的显示名称
@@ -66,4 +66,3 @@ class Science(models.Model):
 
     def __str__(self):
         return self.title
-
