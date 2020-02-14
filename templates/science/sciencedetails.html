@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load science_extras %}
+{% block content %}
+
+        <div class="breadcrumb-area pt-95 pb-95 bg-img" style="background-image:url(assets/img/banner/banner-2.jpg);">
+            <div class="container">
+                <div class="breadcrumb-content text-center">
+                    <h2>博客详情</h2>
+                    <ul>
+                        <li><a href="{% url 'index' %}">首页</a></li>
+                        <li class="active">博客详情</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="shop-area pt-100 pb-100">
+            <div class="container">
+                <div class="row flex-row-reverse">
+                    <div class="col-lg-9 col-md-8">
+                        <div class="blog-details-wrapper res-mrg-top">
+                            <div class="single-blog-wrapper">
+                                <div class="blog-img mb-30">
+                                    <img src="{% static 'assets/img/blog/blog-details.jpg' %}" alt="">
+{#                                    <img src="{{ science.img }}" height="200" width="200" />#}
+                                </div>
+                                <div class="blog-details-content">
+                                    <h2>{{ science.title }}</h2>
+                                    <div class="blog-meta">
+                                        <ul>
+                                            <li>{{ science.created_time }} </li>
+                                            <li>
+                                                <a href="#"> {{ science.views }} 阅读</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <p> {{ science.body }} </p>
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="dec-img">
+                                                <img src="{%  static '/assets/img/blog/blog-dec-img1.jpg' %}" alt="">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <div class="dec-img dec-mrg res-mrg-top-2">
+                                                <img src="{%  static 'assets/img/blog/blog-dec-img2.jpg' %}" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="blog-dec-tags-social">
+                                    <div class="blog-dec-tags">
+                                        <ul>
+                                            <li><a href="#">{{ science.author }}</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="blog-dec-social">
+                                        <span>分享 :</span>
+                                        <ul>
+                                            <li><a href="#"><i class="icon-social-twitter"></i></a></li>
+                                            <li><a href="#"><i class="icon-social-instagram"></i></a></li>
+                                            <li><a href="#"><i class="icon-social-dribbble"></i></a></li>
+                                            <li><a href="#"><i class="icon-social-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4">
+                        <div class="shop-sidebar blog-mrg">
+                            <div class="shop-widget">
+                            <h4 class="shop-sidebar-title">搜索科普</h4>
+                            <div class="shop-search mt-25 mb-50">
+                                <form role="search" class="shop-search-form" method="get"
+                                      action="{% url 'science:search' %}">
+                                    <input type="search" name="q" placeholder="搜索" required>
+                                    <button type="submit">
+                                        <i class="icon-magnifier"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+
+
+
+                            {% show_archives %}
+                              {% show_categories %}
+                              {% show_tags %}
+
+                            {% if post.toc %}
+                            <div class="shop-widget mt-50">
+                                <h4 class="shop-sidebar-title">文章目录</h4>
+                                <div class="mt-20">
+                                    <div class="toc">
+                                        <ul>
+                                            {{ post.toc|safe }}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+
+
+                            <div class="shop-widget mt-50">
+                                <h4 class="shop-sidebar-title">相关博客</h4>
+                                <div class="recent-post-wrapper mt-25">
+                                    <div class="single-recent-post mb-20">
+                                        <div class="recent-post-img">
+                                            <a href="#"><img src="{%  static 'assets/img/blog/blog-s1.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="recent-post-content">
+                                            <h4><a href="#">My Dog, Aren</a></h4>
+                                            <span>April 19, 2018 </span>
+                                        </div>
+                                    </div>
+                                    <div class="single-recent-post mb-20">
+                                        <div class="recent-post-img">
+                                            <a href="#"><img src="{%  static 'assets/img/blog/blog-s2.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="recent-post-content">
+                                            <h4><a href="#">My Dog, Tomy</a></h4>
+                                            <span>April 19, 2018 </span>
+                                        </div>
+                                    </div>
+                                    <div class="single-recent-post mb-20">
+                                        <div class="recent-post-img">
+                                            <a href="#"><img src="{%  static 'assets/img/blog/blog-s3.jpg' %}" alt=""></a>
+                                        </div>
+                                        <div class="recent-post-content">
+                                            <h4><a href="#">My Dog, Suju</a></h4>
+                                            <span>April 19, 2018 </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+{% endblock content %}
+

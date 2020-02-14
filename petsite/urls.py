@@ -28,4 +28,5 @@ urlpatterns = [
                   path('user/', include('users.urls')),  # 用户管理
                   path('captcha', include('captcha.urls')),  # 验证码
                   path('petback/', include('petback.urls')),  # 宠物找回
+                  path('science/', include('science.urls')),  #宠物科普
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
