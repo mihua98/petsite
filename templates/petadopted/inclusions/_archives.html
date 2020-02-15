@@ -1,0 +1,16 @@
+<div class="shop-widget mt-50">
+    <h4 class="shop-sidebar-title">发布时间</h4>
+    <div class="shop-list-style mt-20">
+        <ul>
+            {% for date in date_list %}
+                <li>
+                    <a href="{% url 'petadopted:archive' date.year date.month %}">
+                        {{ date.year }} 年 {{ date.month }} 月
+                    </a>
+                </li>
+            {% empty %}
+                暂无归档!
+            {% endfor %}
+        </ul>
+    </div>
+</div>

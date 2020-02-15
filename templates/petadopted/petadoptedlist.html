@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load petadopted_extras %}
+{% block content %}
+
+    <div class="breadcrumb-area pt-95 pb-95 bg-img"
+         style="background-image:url({% static 'assets/img/banner/banner-2.jpg' %});">
+        <div class="container">
+            <div class="breadcrumb-content text-center">
+                <h2>宠物科普</h2>
+                <ul>
+                    <li><a href="{% url 'index' %}">首页</a></li>
+                    <li class="active">宠物科普</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="shop-area pt-100 pb-100">
+        <div class="container">
+            <div class="row flex-row-reverse">
+                <div class="col-lg-9 col-md-8">
+                    <div class="grid-list-product-wrapper">
+                        <div class="product-view product-list">
+                            <div class="row">
+                                {% for petadopted in petadopted_list %}
+                                    <div class="product-width col-lg-6 col-xl-4 col-md-6 col-sm-6">
+                                        <div class="product-wrapper mb-10">
+                                            <div class="product-img">
+                                                <a href="{{ petadopted.get_absolute_url }}">
+                                                    <img src="/media/{{ petadopted.pet_img }}" alt="">
+                                                </a>
+                                                <div class="product-action-wishlist">
+                                                    <a title="收藏" href="#">
+                                                        <i class="ti-heart"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-list-content">
+                                                <h4><a href="{{ petadopted.get_absolute_url }}">{{ petadopted.title }}</a>
+                                                </h4>
+                                                <p>{{ petadopted.excerpt }}</p>
+                                                <div class="product-list-action">
+                                                    <div class="product-list-action-left">
+                                                        <a class="addtocart-btn" title="查看详情"
+                                                           href="{{ petadopted.get_absolute_url }}"><i class="ion-bag"></i>
+                                                            查看详情</a>
+                                                    </div>
+                                                    <div class="product-list-action-right">
+                                                        <a title="收藏" href="#"><i class="ti-heart"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            {% if is_paginated %}
+                                {{ page_obj.render }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="shop-sidebar">
+                        <div class="shop-widget">
+                            <h4 class="shop-sidebar-title">搜索宠物</h4>
+                            <div class="shop-search mt-25 mb-50">
+                                <form role="search" class="shop-search-form" method="get"
+                                      action="{% url 'petadopted:search' %}">
+                                    <input type="search" name="q" placeholder="搜索" required>
+                                    <button type="submit">
+                                        <i class="icon-magnifier"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+
+                        {% show_archives %}
+                        {% show_categories %}
+                        {% show_tags %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
