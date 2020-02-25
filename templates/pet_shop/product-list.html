@@ -47,7 +47,7 @@
                                         <div class="product-wrapper mb-10">
                                             <div class="product-img">
                                                 <a href="{{ product.get_absolute_url }}">
-                                                    <img src="/media/{{ product.main_img }}" alt="">
+                                                    <img src="/media/{{ product.goods_front_image }}" alt="">
                                                 </a>
                                                 <div class="product-action">
                                                     <a title="预览" data-toggle="modal" data-target="#exampleModal"
@@ -68,9 +68,9 @@
                                             <div class="product-content">
                                                 <h4><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
                                                 <div class="product-price">
-                                                    <span class="new">￥{{ product.price }} </span>
-                                                    {% if product.old_price %}
-                                                        <span class="old">￥{{ product.old_price }}</span>
+                                                    <span class="new">￥{{ product.shop_price }} </span>
+                                                    {% if product.market_price %}
+                                                        <span class="old">￥{{ product.market_price }}</span>
                                                     {% endif %}
                                                 </div>
                                             </div>
@@ -78,12 +78,12 @@
                                             <div class="product-list-content">
                                                 <h4><a href="{{ product.get_absolute_url }}">{{ product.name }}</a></h4>
                                                 <div class="product-price">
-                                                    <span class="new">￥{{ product.price }} </span>
-                                                    {% if product.old_price %}
-                                                        <span class="old">￥{{ product.old_price }}</span>
+                                                    <span class="new">￥{{ product.shop_price }} </span>
+                                                    {% if product.market_price %}
+                                                        <span class="old">￥{{ product.market_price }}</span>
                                                     {% endif %}
                                                 </div>
-                                                <p>{{ product.intro }}</p>
+                                                <p>{{ product.goods_brief }}</p>
                                                 <div class="product-list-action">
                                                     <div class="product-list-action-left">
                                                         <a class="addtocart-btn" title="添加到购物车" href="#"><i

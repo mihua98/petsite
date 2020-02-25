@@ -10,15 +10,15 @@ from pet_shop.models import *
 
 
 class ProductListView(PaginationMixin, ListView):
-    model = Product
+    model = Goods
     template_name = 'pet_shop/product-list.html'
     context_object_name = 'product_list'
-    ordering = '-created_time'
+    ordering = '-add_time'
     paginate_by = 12
 
 
 class ProductDetailView(DetailView):
-    model = Product
+    model = Goods
     template_name = 'pet_shop/product-details.html'
     context_object_name = 'product'
 
