@@ -30,6 +30,9 @@ ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'captcha',
+    'goods.apps.GoodsConfig',
+    'trade.apps.TradeConfig',
+    'user_operation.apps.UserOperationConfig',
     'petadopted.apps.PetadoptedConfig',
     'science.apps.ScienceConfig',
     'petback.apps.PetbackConfig',
@@ -37,6 +40,10 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'pet_shop.apps.PetShopConfig',
     'pure_pagination',
+    'crispy_forms',
+    'DjangoUeditor',
+    'xadmin',
+    'rest_framework',
 
     'django.contrib.admin',
     'django.contrib.auth',

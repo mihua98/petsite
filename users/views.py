@@ -23,7 +23,7 @@ class IndexView(View):
 
     def get(self, request):
         post_list = Post.objects.all()[:3]  # 宠物博客
-        product_list = Product.objects.all()[:8]  # 宠物商品
+        product_list = Goods.objects.all()[:8]  # 宠物商品
 
         return render(request, 'users/index.html', context={
             'post_list': post_list,
