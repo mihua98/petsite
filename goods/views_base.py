@@ -1,4 +1,3 @@
-# encoding: utf-8
 from goods.models import Goods
 
 __author__ = 'mtianyan'

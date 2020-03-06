@@ -1,4 +1,3 @@
-# -*- coding:utf-8 _*-
 from django.db.models import Q
 
 __author__ = 'mtianyan'

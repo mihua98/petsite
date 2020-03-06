@@ -1,8 +1,5 @@
-# encoding: utf-8
 from rest_framework.validators import UniqueTogetherValidator
 
-__author__ = 'mtianyan'
-__date__ = '2018/3/10 0010 09:54'
 from rest_framework import serializers
 from user_operation.models import UserFav, UserLeavingMessage, UserAddress
 from goods.serializers import GoodsSerializer

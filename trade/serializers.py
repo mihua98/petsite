@@ -1,15 +1,11 @@
-# encoding: utf-8
 import time
 
-from VueDjangoFrameWorkShop.settings import private_key_path, ali_pub_key_path
+from petsite.settings import private_key_path, ali_pub_key_path
 from goods.models import Goods
 from goods.serializers import GoodsSerializer
 from rest_framework import serializers
 from trade.models import ShoppingCart, OrderInfo, OrderGoods
 from utils.alipay import AliPay
-
-__author__ = 'mtianyan'
-__date__ = '2018/3/11 0011 16:19'
 
 
 class ShopCartDetailSerializer(serializers.ModelSerializer):

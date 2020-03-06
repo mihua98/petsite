@@ -1,7 +1,3 @@
-# encoding: utf-8
-# __author__ = 'mtianyan'
-# __date__ = '2018/2/13 0013 20:26'
-
 import xadmin
 from .models import Goods, GoodsCategory, GoodsImage, HotSearchWords
 

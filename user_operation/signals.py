@@ -1,7 +1,3 @@
-# encoding: utf-8
-__author__ = 'mtianyan'
-__date__ = '2018/3/9 0009 09:29'
-
 from django.conf import settings
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
